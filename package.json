@@ -1,0 +1,23 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "Admin da casa do codigo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuizParo/js-35-casadocodigo-caelum.git"
+  },
+  "author": "Luiz Guilherme Paro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuizParo/js-35-casadocodigo-caelum/issues"
+  },
+  "homepage": "https://github.com/LuizParo/js-35-casadocodigo-caelum#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
