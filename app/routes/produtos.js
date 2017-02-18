@@ -7,7 +7,24 @@ module.exports = app => {
     let dao = new ProdutoDao(connection);
 
     dao.listaTodos((error, livros, fields) => {
-      res.render('produtos/lista', {livros});
+      res.render('produtos/lista', {livros, salvo : req.query.salvo});
+    });
+
+    connection.end();
+  });
+
+  app.get('/produtos/form', (req, res) => res.render('produtos/form'));
+
+  app.post('/produtos', (req, res) => {
+    let connection = connectionFactory();
+    let dao = new ProdutoDao(connection);
+
+    dao.criar(req.body, (error, livro, fields) => {
+      if(error) {
+        console.log(error);
+        return;
+      }
+      res.redirect('/produtos?salvo=true');
     });
 
     connection.end();
