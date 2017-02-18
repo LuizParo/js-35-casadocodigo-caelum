@@ -19,6 +19,7 @@
   "homepage": "https://github.com/LuizParo/js-35-casadocodigo-caelum#readme",
   "dependencies": {
     "ejs": "^2.5.5",
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "mysql": "^2.13.0"
   }
 }
