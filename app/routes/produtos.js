@@ -7,7 +7,11 @@ module.exports = app => {
     let dao = new ProdutoDao(connection);
 
     dao.listaTodos((error, livros, fields) => {
-      res.render('produtos/lista', {livros, salvo : req.query.salvo});
+      res.format({
+        html : () => res.render('produtos/lista', {livros, salvo : req.query.salvo}),
+
+        json : () => res.json(livros)
+      });
     });
 
     connection.end();
