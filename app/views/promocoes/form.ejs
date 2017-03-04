@@ -1,0 +1,21 @@
+<% include ../includes/header.ejs %>
+
+<form>
+  <div>
+    <label for="mensagem">Mensagem</label>
+    <input type="text" id="mensagem" name="mensagem" />
+  </div>
+
+  <div>
+    <select>
+      <% livros.map(livro => { %>
+        <option value="<%= livro.id %>" >
+          <%= livro.titulo %>
+        </option>
+      <% }) %>
+  </div>
+
+  <input type="submit" value="Promoção relâmpago" />
+</form>
+
+<% include ../includes/footer.ejs %>

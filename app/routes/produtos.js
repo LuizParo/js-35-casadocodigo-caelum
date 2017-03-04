@@ -1,36 +1,11 @@
-let connectionFactory = require('../../config/connectionFactory');
-let ProdutoDao = require('../dao/ProdutoDao');
+let ProdutoController = require('../controller/ProdutoController');
 
 module.exports = app => {
-  app.get('/produtos', (req, res) => {
-    let connection = connectionFactory();
-    let dao = new ProdutoDao(connection);
+  app.get('/produtos/form', ProdutoController.form);
 
-    dao.listaTodos((error, livros, fields) => {
-      res.format({
-        html : () => res.render('produtos/lista', {livros, salvo : req.query.salvo}),
+  app.get('/produtos', ProdutoController.lista);
 
-        json : () => res.json(livros)
-      });
-    });
+  app.get('/produtos/:id/form', ProdutoController.buscaPorId);
 
-    connection.end();
-  });
-
-  app.get('/produtos/form', (req, res) => res.render('produtos/form'));
-
-  app.post('/produtos', (req, res) => {
-    let connection = connectionFactory();
-    let dao = new ProdutoDao(connection);
-
-    dao.criar(req.body, (error, livro, fields) => {
-      if(error) {
-        console.log(error);
-        return;
-      }
-      res.redirect('/produtos?salvo=true');
-    });
-
-    connection.end();
-  });
+  app.post('/produtos', ProdutoController.salva);
 };
